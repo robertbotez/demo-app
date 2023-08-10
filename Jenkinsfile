@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh ("pwd")
+                sh ("./build-and-deploy.sh")
             }
         }
         stage('Test') {
