@@ -31,14 +31,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Building..'
                 pwd
-                ls
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                ls
             }
         }
         stage('Deploy') {
