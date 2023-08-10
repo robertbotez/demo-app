@@ -30,17 +30,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh ("./build-and-deploy.sh")
-            }
-        }
-        stage('Test') {
-            steps {
-                sh ("ls")
+                sh ("./build-pipeline.sh")
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh ("./deploy-pipeline.sh")
             }
         }
     }
