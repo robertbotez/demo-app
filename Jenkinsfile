@@ -1,9 +1,8 @@
 pipeline {
     agent any
     parameters {
-    string(name:'GIT_URL', description:'The URL of the source Git repository to use.')
-    string(name:'GIT_BRANCH', description:'The branch in the source Git repository to use.')
-    string(name:'FILE_TO_SHOW', defaultValue:'', description:'The relative pathname of a file to print into the log.')
+    string(name:'GIT_URL', description:'The URL of the source Git repository to use.', defaultValue: 'https://github.com/robertbotez/demo-app')
+    string(name:'GIT_BRANCH', description:'The branch in the source Git repository to use.', defaultValue: 'main')
     }
     stages {
         stage("Checkout") {
@@ -11,7 +10,7 @@ pipeline {
                 checkout(changelog: false, poll: false, scm: [
                     $class: 'GitSCM',
                     branches: [
-                        [name: 'main'],
+                        [name: params.GIT_BRANCH],
                     ],
                     doGenerateSubmoduleConfigurations: false,
                     extensions: [
@@ -23,7 +22,7 @@ pipeline {
                     submoduleCfg: [],
                     userRemoteConfigs: [
                         [
-                            url: 'https://github.com/robertbotez/demo-app',
+                            url: params.GIT_URL,
                         ],
                     ],
                 ])
