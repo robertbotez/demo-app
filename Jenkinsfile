@@ -31,12 +31,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                pwd
+                sh ("pwd")
             }
         }
         stage('Test') {
             steps {
-                ls
+                sh ("ls")
             }
         }
         stage('Deploy') {
